@@ -3,6 +3,7 @@ package com.example.tasktracker.controller;
 import com.example.tasktracker.model.Task;
 import com.example.tasktracker.repository.TaskRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -54,12 +55,20 @@ public class TaskController {
     }
 
     @PutMapping("/{id}/toggle")
+    public ResponseEntity<?> toggleTask(@PathVariable Long id) {
+        Task task = taskRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("Task not found"));
 
-    public Task toggleTask(@PathVariable Long id){
-        Task task = taskRepository.findById(id).orElseThrow(() -> new RuntimeException("Task not found"));
+        if (task.getTitle() == null || task.getTitle().trim().isEmpty()) {
+            return ResponseEntity.badRequest().body("Task title cannot be null or empty.");
+        }
+
         task.setCompleted(!task.isCompleted());
-        return taskRepository.save(task);
+        return ResponseEntity.ok(taskRepository.save(task));
     }
+
+
+
 
 
     @DeleteMapping("/{id}")
