@@ -8,9 +8,9 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 import java.util.Optional;
 
+@CrossOrigin(origins = "https://task-tracker-2x38xsg0g-troy-nelsons-projects.vercel.app")
 @RestController
 @RequestMapping("/api/tasks")
-@CrossOrigin(origins = "*")
 
 
 public class TaskController {
