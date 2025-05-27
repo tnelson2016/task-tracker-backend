@@ -14,7 +14,9 @@ public class WebConfig implements WebMvcConfigurer {
                         "http://localhost:3000",
                         "http://localhost:3001",
                         "https://task-tracker-frontend-wu82.vercel.app",
-                        "https://task-tracker-frontend-wu82-4o3kq7w7e-troy-nelsons-projects.vercel.app"  // ✅ Full Vercel domain
+                        "https://task-tracker-frontend-wu82-4o3kq7w7e-troy-nelsons-projects.vercel.app",  // ✅ Full Vercel domain
+                        "https://task-tracker-frontend-six-pi.vercel.app" // ✅ NEW URL you just deployed to
+
                 )
                 .allowedMethods("GET", "POST", "PUT", "DELETE")
                 .allowedHeaders("*");
